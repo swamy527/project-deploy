@@ -1,0 +1,19 @@
+-  name : deploy latest package
+   hosts : all
+   become : yes
+   vars : 
+     USERNAME : tomcat_user
+   tasks :
+     -  name : create user
+        ansible.builtin.user :
+          name : "{{USERNAME}}"
+     -  name : creates directory
+        fiel :
+          path : /tom
+          state : directory
+          owner : "{{USERNAME}}"
+          group : "{{USERNAME}}"
+         
+         
+   
+  
