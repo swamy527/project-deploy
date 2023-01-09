@@ -13,9 +13,13 @@
           state : directory
           owner : "{{USERNAME}}"
           group : "{{USERNAME}}"
+          mode : 0755 
      -  name: Extract tomcat
         ansible.builtin.unarchive:
           src: https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.70/bin/apache-tomcat-9.0.70.tar.gz
           dest: /tom
           remote_src: yes
         become_user : "{{USERNAME}}"
+     -  name: java install
+        ansible.builtin.shell:
+          cmd: amazon-linux-extras install java-openjdk11 -y
