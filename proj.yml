@@ -25,7 +25,7 @@
           cmd: amazon-linux-extras install java-openjdk11 -y
      -  name: Download war file
         ansible.builtin.get_url:
-          url: http://34.125.8.93:8081/repository/maven-snapshots/com/murali/webs/3.0-SNAPSHOT/webs-3.0-20230109.143246-1.war
+          url: "{{warurl}}"
           dest: /tom/apache-tomcat-9.0.70/webapps/bs.war
      -  name: tomcat running or not
         ansible.builtin.shell:
