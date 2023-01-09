@@ -17,3 +17,7 @@
         ansible.builtin.get_url:
           url: https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.70/bin/apache-tomcat-9.0.70.tar.gz
           dest: /tom
+     -  name: Extract foo.tgz into /var/lib/foo
+        ansible.builtin.unarchive:
+          src: /tom/apache-tomcat-9.0.70.tar.gz
+          dest: /tom
