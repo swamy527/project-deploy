@@ -8,7 +8,7 @@
         ansible.builtin.user :
           name : "{{USERNAME}}"
      -  name : creates directory
-        fiel :
+        file :
           path : /tom
           state : directory
           owner : "{{USERNAME}}"
