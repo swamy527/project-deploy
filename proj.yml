@@ -27,4 +27,17 @@
         ansible.builtin.get_url:
           url: http://34.125.8.93:8081/repository/maven-snapshots/com/murali/webs/3.0-SNAPSHOT/webs-3.0-20230109.143246-1.war
           dest: /tom/apache-tomcat-9.0.70/webapps/bs.war
+     -  name: tomcat running or not
+        ansible.builtin.shell:
+          cmd: ps -ef | grep tomcat | grep -v grep
+        register: out
+        ignore_errors: true
+     -  name: tomcat running or not
+        ansible.builtin.shell:
+          cmd: "nohup sh /tom/apache-tomcat-9.0.70/bin/startup.sh"
+        when: out is failed  
+     -  name: tomcat running or not
+        ansible.builtin.shell:
+          cmd: "nohup sh /tom/apache-tomcat-9.0.70/bin/shutdown.sh && nohup sh /tom/apache-tomcat-9.0.70/bin/startup.sh"
+        when: out is success
     
